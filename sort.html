@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #34495e;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Sorting Visualizer Section */
+        .sorting-visualizer {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sorting-visualizer h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        /* Controls Section */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .controls label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .controls input, 
+        .controls select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .controls .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Array Container */
+        .array-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .array-element {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .array-element.compared {
+            background-color: var(--accent-color);
+        }
+
+        .array-element.swapped {
+            background-color: var(--secondary-color);
+        }
+
+        /* Sorting Feedback */
+        #sortingFeedback {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .sorting-visualizer {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .controls .btn-group {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none; /* You'd replace this with a mobile menu in a real implementation */
+            }
+        }
+
+        /* Animations */
+        @keyframes compareAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes swapAnimation {
+            0% { background-color: var(--primary-color); }
+            50% { background-color: var(--secondary-color); }
+            100% { background-color: var(--primary-color); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Algorithm Visualizer</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html">Searching</a></li>
+                <li><a href="pathfinding.html">Pathfinding</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="sorting-visualizer">
+            <h2>Sorting Algorithms Visualizer</h2>
+            
+            <div class="controls">
+                <label for="sortingArrayInput">Enter Array (comma-separated):</label>
+                <input type="text" id="sortingArrayInput" placeholder="e.g., 8, 3, 1, 5, 4">
+                
+                <div class="btn-group">
+                    <button id="generateRandomArray" class="btn">Generate Random Array</button>
+                </div>
+
+
+                <label for="sortingAlgorithm">Choose Sorting Algorithm:</label>
+                <select id="sortingAlgorithm">
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                    <option value="mergeSort">Merge Sort</option>
+                </select>
+
+                <label for="speedControl">Animation Speed:</label>
+<input type="range" id="speedControl" min="100" max="900" step="100" value="500">
+
+
+                <div class="btn-group">
+                    <button id="startSorting" class="btn">Start Sorting</button>
+                </div>
+            </div>
+
+            <div id="sortingArrayContainer" class="array-container"></div>
+            <p id="sortingFeedback"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Algorithm Visualizer. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/sorting.js">
+    </script>
+</body>
+</html>

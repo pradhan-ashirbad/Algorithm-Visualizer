@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Algorithm Visualizer</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html">Searching</a></li>
+                <li><a href="sort.html">Sorting</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="left-panel">
+                <div id="controls">
+                    <label for="algorithmSelector">Choose Algorithm:</label>
+                    <select id="algorithmSelector">
+                        <option value="dijkstra">Dijkstra's Algorithm</option>
+                        <option value="aStar">A* (A-Star) Algorithm</option>
+                        <option value="bfs">Breadth-First Search (BFS)</option>
+                    </select>
+                    <button id="startVisualization" class="btn">Start Visualization</button>
+                    <button id="clearGrid" class="btn">Clear Grid</button>
+                    <button id="randomWalls" class="btn">Generate Random Walls</button>
+                    <button id="buildMaze" class="btn">Build Maze</button>
+                </div>
+
+                <div class="instructions">
+                    <h3>How to Use</h3>
+                    <ol>
+                        <li>First Click: Set Start Node</li>
+                        <li>Second Click: Set End Node</li>
+                        <li>Additional Clicks: Add/Remove Walls</li>
+                        <li>Choose an algorithm</li>
+                        <li>Click 'Start Visualization'</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div id="gridContainer"></div>
+                <p id="feedback"></p>
+            </div>
+
+            <div class="stats-panel">
+                <div class="legend">
+                    <h3>Legend</h3>
+                    <div class="legend-item">
+                        <div class="legend-box start"></div>
+                        <span>Start Node</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box end"></div>
+                        <span>End Node</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box wall"></div>
+                        <span>Wall</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box visited"></div>
+                        <span>Visited Node</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box path"></div>
+                        <span>Shortest Path</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box unvisited"></div>
+                        <span>Unvisited Node</span>
+                    </div>
+                </div>
+
+                <div class="statistics">
+                    <h3>Statistics</h3>
+                    <div class="stat-item">
+                        <span>Nodes Visited:</span>
+                        <span id="nodesVisited">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Path Length:</span>
+                        <span id="pathLength">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Time Taken:</span>
+                        <span id="timeTaken">0ms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/pathfinding.js"></script>
+</body>
+</html>
